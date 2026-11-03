@@ -19,9 +19,14 @@ app.use(express.static(path.join(__dirname, '..', 'frontend')));
 // ===== API Routes =====
 app.use('/api/gallery', galleryRoutes);
 
-// ===== Serve frontend =====
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'frontend', 'index.html'));
+// ===== Serve frontend (SPA fallback) =====
+app.use((req, res) => {
+  const target = req.path === '/' ? '/index.html' : req.path;
+  res.sendFile(path.join(__dirname, '..', 'frontend', target), (err) => {
+    if (err) {
+      res.status(404).send('Not Found');
+    }
+  });
 });
 
 // ===== Start Server =====
