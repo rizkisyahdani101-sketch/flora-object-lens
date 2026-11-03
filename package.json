@@ -1,0 +1,17 @@
+{
+  "name": "flora-object-lens",
+  "version": "2.0.0",
+  "description": "Fullstack web app deteksi tumbuhan dan objek menggunakan kamera + TensorFlow.js",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "node -r dotenv/config backend/server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
